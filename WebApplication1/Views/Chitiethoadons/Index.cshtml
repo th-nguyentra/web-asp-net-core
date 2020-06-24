@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebApplication1.Models.Chitiethoadon>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+
+<div style="text-align: center"><h2 style="background: #c6d9f1">CHI TIẾT ĐƠN HÀNG</h2></div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MahdNavigation.Mahd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaspNavigation.Tensp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaspNavigation.Anhdaidien)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Soluong)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Thanhtien)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MahdNavigation.Mahd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaspNavigation.Tensp)
+                    </td>
+                    <td>
+
+                        <img style="width: 100px;height: 120px;" src="@item.MaspNavigation.Anhdaidien" alt="">
+                    </td>
+                    <td>
+                        @String.Format("{0:N0}", item.Gia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+                    <td>
+                        @String.Format("{0:N0}", item.Thanhtien)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>

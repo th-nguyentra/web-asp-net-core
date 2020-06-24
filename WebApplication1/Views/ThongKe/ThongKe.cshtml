@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "ThongKe";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#date').blur(function () {
+                var date = $('#date').val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/thongke/demo/' + date,
+                    success: function (result) {
+                        var s = '';
+                        var stt = 0;
+                        s += '<table>';
+                        s += '<tr><th>STT</th><th>Mã hóa đơn</th><th>Ngày tạo</th><th>Tổng tiền</th><th>Mã khách hàng</th></tr>';
+                        for (var i = 0; i < result.length; i++) {
+                            s += '<tr>';
+                            s += '<td>' + stt++ + '</td>';
+                            s += '<td>' + result[i].mahd + '</td>';
+                            s += '<td>' + result[i].createdAt + '</td>';
+                            s += '<td>' + result[i].tongtien + '</td>';
+                            s += '<td>' + result[i].idkh + '</td>';
+                            s +=  '</tr>';
+                        }
+                        s += '</table>';
+                      
+                        $('#test').html(s);
+                    }
+                });
+            });
+
+
+           
+
+        });
+    </script>
+</head>
+<body>
+
+
+    <div style="text-align: center"><h2 style="background: #c6d9f1">REPORT</h2></div>
+
+
+
+    @using (Html.BeginForm("print", "ThongKe", FormMethod.Post))
+    {
+        <span>Nhập ngày : </span>
+        <input style="width: 200px" type="text" name="date" id="date">
+        <div style="text-align: right">  <input style="text-align: right" type="submit" value="PRINT" /></div>
+    }
+
+    <p id="test"></p>
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Reportad";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="trangchuad">Trang chủ</a><i class="fa fa-angle-right"></i>Đơn hàng</li>
+</ol>
+
+<!-- grids -->
+<div class="grids">
+
+
+
+    <div class="agile-calendar-grid">
+        <div class="page">
+
+            <div class="w3l-calendar-left">
+                <div class="calendar-heading">
+                
+                    <form method="post" asp-controller="ExportToPDF" asp-action="ThongKe">
+
+                        <div style="text-align: center"><h2 style="background: #c6d9f1">REPORT</h2></div>
+                        Nhập ngày:<input style="width: 200px" type="text" name="date" id="date">
+                        <a role="button" id="date" class="btn btn-primary">SEARCH</a>
+                    </form>
+
+                    <div style="text-align: right"><a href=""><i class="fa fa-print"></i><span>PRINT PDF</span></a></div>
+
+
+                    <p id="test"></p>
+
+
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</div>
+
+
+
+
+
+  
+   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+         
+
+                $('#buttonDemo4').click(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/ExportToPDF/ThongKe',
+                        success: function (result) {
+                            var s = '';
+                            for (var i = 0; i < result.length; i++) {
+                                s += '<br>Id: ' + result[i].CreatedAt;
+                        
+                                s += '<br>------------------';
+                            }
+                            $('#result4').html(s);
+                        }
+                    });
+                });
+
+
+                $('#date').click(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/ExportToPDF/ThongKe',
+                        success: function (result) {
+                            var s = '';
+                            for (var i = 0; i < result.length; i++) {
+                                s += '<br>Id: ' + result[i].CreatedAt;
+                              
+                                s += '<br>------------------';
+                            }
+                            $('#test').html(s);
+                        }
+                    });
+                });
+
+            });
+        </script>
+
+    </div>
+    </div>
+

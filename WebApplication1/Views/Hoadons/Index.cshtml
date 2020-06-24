@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplication1.Models.Hoadon>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+
+<div style="text-align: center"><h2 style="background: #c6d9f1">DANH SÁCH ĐƠN HÀNG</h2></div>
+<p>
+    <a asp-action="Create">Tạo Hóa Đơn</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+
+            <th>
+                Tổng tiền
+            </th>
+
+
+            <th>
+                Tình trạng
+            </th>
+            <th>
+                Chi tiết đơn hàng
+            </th>
+            <th>
+                Xuất đơn hàng
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Mahd)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Sdt)
+            </td>
+
+            <td>
+
+                @String.Format("{0:N0}", item.Tongtien)
+            </td>
+
+           
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Tinhtrang)
+            </td>
+            <td>
+                <a asp-controller="Chitiethoadons" asp-action="Index" asp-route-id="@item.Mahd">Chi tiết</a>
+            </td>
+            <td>
+                <a asp-controller="ExportToPDF" asp-action="ExportToPDF" asp-route-id="@item.Mahd">PDF</a>
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Mahd">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Mahd">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Mahd">Delete</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Hang>
+@{
+    ViewData["Title"] = "NhaSanXuatAD";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="trangchuad">Trang chủ</a><i class="fa fa-angle-right"></i>Quản lý nhà sản xuất</li>
+</ol>
+
+<!-- grids -->
+<div class="grids">
+
+
+
+    <div class="agile-calendar-grid">
+        <div class="page">
+
+            <div class="w3l-calendar-left">
+                <div class="calendar-heading">
+                    <!-- 									<p>Noi dung</p>
+                     -->
+                    <div class="agile-tables">
+                        <div class="w3l-table-info">
+                            <h2>Thêm nhà sản xuất</h2>
+
+                            <div class="row">
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+                                </div>
+                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+
+                                    <form method="post" action="{{route('themhang')}}">
+
+                                        <div class="form-group">
+                                            <label for="ten">Tên nhà sản xuất:</label>
+                                            <input type="text" class="form-control" id="ten" name="hang">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Thêm nhà sản xuất</button>
+                                    </form>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+                                </div>
+                            </div>
+
+                            <h2>Cập nhật nhà sản xuất</h2>
+                            <table id="table">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Mã nhà sản xuất</th>
+                                        <th>Tên nhà sản xuất</th>
+                                        <th>Chỉnh sửa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $stt=0?>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="info">
+                                            <?php $stt++ ?>
+                                            <td> {{$stt}}</td>
+                                            <td>@item.Mahang</td>
+                                            <td>@item.Tenhang</td>
+                                            <td style="text-align: center;">
+                                                <span>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-mahang="{{$hang->MAHANG}}"
+                                                            data-tenhang="{{$hang->TENHANG}}"
+                                                            data-toggle="modal" data-target="#myModal">
+                                                        Edit
+                                                    </button>
+                                                </span>
+                                                <span>
+                                                    <!-- <a class="agile-icon" href="" data-toggle="modal" data-target="#myModal1">delete</a> -->
+                                                    <a class="agile-icon" href="{{URL::route('xoahang',$hang['MAHANG'])}}" data-toggle="modal" data-target="#myModal1"><i class="fa fa-times-circle"></i></a>
+                                                </span>
+
+                                            </td>
+                                        </tr>
+                                      }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Modal Heading</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Cập nhật thông tin nhà sản xuất</h4>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form action="{{ route('updatehang',($hang->MAHANG)) }}" method="POST">
+
+                                            <input type="hidden" name="mahang" id="mahang" value="">
+                                            <div class="form-group">
+                                                <label for="ten">Tên nhà sản xuất:</label>
+                                                <input type="text" class="form-control" id="tenhang" name="tenhang" value="">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-default">Cập nhật nhà sản xuất</button>
+                                        </form>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sanpham -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal1" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Bạn có chắc chắn muốn xóa hay không?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="">
+                                            <button type="submit" class="btn btn-default" style="margin-left: 43%;">Xóa</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end modal sanpham -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //grids -->
+<!--photoday-section-->
+
+
+<div class="col-sm-4 wthree-crd">
+    <div class="card">
+        <div class="card-body">
+
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!--//photoday-section-->
+<!-- script-for sticky-nav -->
+
+
+
+<script>
+
+    $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var tenhang = button.data('tenhang')
+        var mahang = button.data('mahang')
+        var modal = $(this)
+        modal.find('.modal-body #tenhang').val(tenhang);
+        modal.find('.modal-body #mahang').val(mahang);
+
+    })</script>
+
+
+<script>
+    $(document).ready(function () {
+        var navoffeset = $(".header-main").offset().top;
+        $(window).scroll(function () {
+            var scrollpos = $(window).scrollTop();
+            if (scrollpos >= navoffeset) {
+                $(".header-main").addClass("fixed");
+            } else {
+                $(".header-main").removeClass("fixed");
+            }
+        });
+
+    });
+</script>
+
+
+

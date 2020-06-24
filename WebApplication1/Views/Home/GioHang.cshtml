@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewData["Title"] = "giohang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div style="    width: 840px;" class="span9">
+        <h4 class="title"><span class="text"><strong>Giỏ Hàng</strong> Của Bạn </span></h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Xóa </th>
+                    <th>Tên sản phẩm </th>
+                    <th>Ảnh đại diện</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Sub Total</th>
+                </tr>
+            </thead>
+            <tbody id="body">
+                <form method="POST" action="">
+                    <input type="hidden" name="_token" value="">
+                    @if (ViewBag.cart != null)
+                    {
+
+                        @foreach (var item in ViewBag.cart)
+                        {
+                            <tr>
+                                <td align="center">
+                                    <a asp-controller="Home" asp-action="remove" asp-route-id="@item.sanpham.Masp"> Remove</a>
+                                </td>
+
+                                <td>@item.sanpham.Tensp</td>
+                                <td><img src="@item.sanpham.Anhdaidien" width="60" /> </td>
+                                <td>
+                                    @if (item.sanpham.Giakhuyenmai != 1)
+                                    {
+                                        <strong></strong> <span>@String.Format("{0:N0}", item.sanpham.Gia * item.sanpham.Giakhuyenmai) VNĐ</span><br>
+                                    }
+                                    else
+                                    {
+                                        <strong></strong> <span>@String.Format("{0:N0}", item.sanpham.Gia) VNĐ</span><br>
+
+                                    }
+                                </td>
+                                <td>
+
+                                    <input type="number" name="quantities" value="@item.Quantity" min="1" style="        width: 50px;
+" />
+                                    <input type="submit" value="Update" asp-controller="Home" asp-action="OnPostUpdate" />
+
+
+                                </td>
+
+
+                                <td>
+                                    @if (item.sanpham.Giakhuyenmai != 1)
+                                    {
+                                        <strong></strong> <span>@String.Format("{0:N0}", item.sanpham.Gia * item.sanpham.Giakhuyenmai * item.Quantity) VNĐ</span><br>
+                                    }
+                                    else
+                                    {
+                                        <strong></strong> <span>@String.Format("{0:N0}", item.sanpham.Gia * item.Quantity) VNĐ</span><br>
+
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                        <tr>
+                            <td align="right" colspan="5">Tổng tiền</td>
+                            <td>
+                                <span> @String.Format("{0:N0}", ViewBag.total) VNĐ</span><br>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td align="right" colspan="5">Tổng tiền</td>
+                            <td>
+                                <span> @String.Format("{0:N0}", ViewBag.total) VNĐ</span><br>
+                            </td>
+                        </tr>
+                    }
+
+                </form>
+
+            </tbody>
+
+        </table>
+
+        <h4> Bạn muốn làm gì tiếp theo? </h4>
+        <p>Chọn 1 đáp án nếu bạn có mã giảm giá hoặc điểm thưởng mà bạn muốn sử dụng hoặc ước tính chi phí vận chuyển của bạn</p>
+        <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            Sử dụng mã giảm giá
+            <input id="magiamgia" type="text" placeholder="Mã giảm giá">
+        </label>
+        <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Ước lượng chi phí mua hàng &amp; cả thuế
+        </label>
+        <hr>
+
+        <hr />
+        <p style="    margin-top: 30px;" class="buttons center">
+
+         
+            <a asp-action="TrangChu"><button  style="background: #ff9c00;" class="btn btn-inverse" type="submit" id="checkout">Tiếp Tục </button></a>
+
+            <a asp-action="ThanhToan"><button  style="background: #ff9c00;" class="btn btn-inverse" type="submit" id="checkout">Thanh Toán</button></a>
+        </p>
+    </div>
+    <div class="span3 col">
+        <div class="block">
+            <ul class="nav nav-list">
+                <li class="nav-header">Hãng sản xuất</li>
+                @await Component.InvokeAsync("Menu");
+            </ul>
+            <br />
+        </div>
+        <div class="block">
+            <h4 class="title">
+                <span class="pull-left"><span class="text">Đề xuất</span></span>
+                <span class="pull-right">
+                    <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                </span>
+            </h4>
+            <div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="active item">
+                        <ul class="thumbnails listing-products">
+                            <li class="span3">
+                                <div class="product-box">
+                                    <span class="sale_tag"></span>
+                                    <a href="product_detail.html"><img alt="" src="https://cdn.tgdd.vn/Products/Images/42/217937/samsung-galaxy-s20-ultra-600x600-1-400x400.jpg"></a><br />
+                                    <!-- <a href="product_detail.html" class="title">Asus X441NA N4200/4GB/500GB/Win10</a><br/> -->
+                                    <a href="#" class="category">Samsung Galaxy S20</a>
+                                    <p class="price">7.490.000đ</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="item">
+                        <ul class="thumbnails listing-products">
+                            <li class="span3">
+                                <div class="product-box">
+                                    <a href="product_detail.html"><img alt="" src="https://cdn.tgdd.vn/Products/Images/42/217935/samsung-galaxy-s20-600x600-hong-400x400.jpg"></a><br />
+                                    <!-- <a href="product_detail.html" class="title">Laptop HP 15 bs161TU i5 8250U/4GB/1TB/Win10/</a><br/> -->
+                                    <a href="#" class="category">Samsung Galaxy S20</a>
+                                    <p class="price">13.990.000đ</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

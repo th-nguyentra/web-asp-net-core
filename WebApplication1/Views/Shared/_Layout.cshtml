@@ -1,0 +1,257 @@
+﻿
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Products 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="~/themes/css/bootstrappage.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+    <link href="~/themes/css/flexslider.css" rel="stylesheet" />
+    <link href="~/themes/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/themes/css/jquery-ui.min.css">
+
+
+
+    <script src="~/themes/js/jquery-1.7.2.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/themes/js/superfish.js"></script>
+    <script src="~/themes/js/jquery.scrolltotop.js"></script>
+    <script type="text/javascript" src="~/themes/js/jquery-ui.min.js"></script>
+
+
+  
+
+
+
+
+</head>
+<body>
+    @{
+        var Id = Context.Session.GetInt32("Id");
+        var Email = Context.Session.GetString("Email");
+        if (Email == null)
+        {
+
+
+        }
+    }
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+               <div  ><sanp>Hotline: 0986820780 (Miễn phí)</sanp></div>
+            </div>
+            <div style="width: 745px;" class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        @if (@Email != null)
+                        {
+                            <li><a asp-controller="Home" asp-action="TaiKhoan" asp-route-id="@Id">Tài khoản</a></li>
+                        } <i class="fa fa-shopping-cart"></i>
+                            <li><a asp-controller="Home" asp-action="GioHang">Giỏ hàng</a></li>
+                            @if (@Email != null)
+                            {
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <strong>@Email</strong>
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @*<li><a asp-area="" asp-controller="Userdetails" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> My Profile</a></li>*@
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+                                    </ul>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <i class="fa fa-key"></i>
+
+                                <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Đăng Ký</a></li>
+
+                            }
+
+
+                        </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section style="    border-top: 1px solid #e7e7e7;background-color: #ffffff; padding: 20px 0 0 0; width: 88%; margin-left: 6%;" class="header-content clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <form method="POST" class="search_form">
+                        <div class="input-group">
+                            <input type="text" class="search-query form-control input-group" Placeholder="Tìm kiếm sản phẩm... ">
+                            <span class="input-group-btn">
+                                <button style="    background: #ff9c00;" class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                            </span>
+
+                        </div>
+                    </form>
+                </div>
+                <div style="    width: 752px;" class="span8">
+                    <div  class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
+
+                    </div>
+                    <div class="col-md-9 col-xs-12 col-sm-12 header-right">
+                        <div style="   margin-bottom: 15px;" class="sale-policy clearfix hidden-sm hidden-xs">
+                            <ul style="list-style: none;" class="clearfix">
+                                <li style="float: left; text-transform: uppercase; color: #aaaaaa; margin-bottom: 10px;
+    margin-right: 50px;" class="shipping">
+                                    <i style="font-size: 24px; color: #ff9c00;  float: left;" class="fa fa-truck" aria-hidden="true"></i><span>
+                                        Giao hàng miễn phí
+                                    </span>
+                                </li>
+                                <li style="float: left; text-transform: uppercase; color: #aaaaaa; margin-bottom: 10px;
+    margin-right: 50px;" class="shipping">
+                                    <i style="font-size: 24px; color: #ff9c00;  float: left;"<i class="fa fa-credit-card" aria-hidden="true"></i><span>
+                                        Thanh toán linh hoạt
+                                    </span>
+                                </li>
+                               
+                                <li style=" text-transform: uppercase; color: #aaaaaa; margin-bottom: 10px;
+    margin-right: 50px;" class="shipping;" class="return">
+                                    <i style="font-size: 24px; color: #ff9c00;  float: left;" class="fa fa-retweet" aria-hidden="true"></i><span>
+                                        Trả hàng trong 30 ngày
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+    </section>
+    <div style="margin: 0px auto 0px auto" id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div style="background:#ced5daa6;" class="navbar-inner main-menu">
+                <a asp-controller="Home" asp-action="TrangChu" class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        @await Component.InvokeAsync("Menu")
+
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <section class="homepage-slider" id="home-slider">
+            <div>
+                <img style="width: 1190px;height: 400px;"
+                     src="https://thietbisoanhkhoa.com/wp-content/uploads/2018/12/23766-Converted_Mesa-de-trabajo-1-copia-copy.png" alt="anh bia 1" />
+            </div>
+        </section>
+
+
+
+        <section class="header_text">
+            Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
+            <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
+        </section>
+        <section class="main-content">
+            @RenderBody()
+        </section>
+        <section>
+            <div class="row feature_box">
+                <div style="width: 360px;" class="span4">
+                    <div class="service">
+                        <div class="responsive">
+                            <img src="themes/images/feature_img_2.png" alt="" />
+                            <h4>THIẾT KẾ <strong>HIỆN ĐẠI</strong></h4>
+                            <p>Các sản phẩm được thiết kế theo mẫu mã hiện đại, thời thượng phù hợp với xu hướng người dùng hiện nay.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="service">
+                        <div class="customize">
+                            <img src="themes/images/feature_img_1.png" alt="" />
+                            <h4>GIAO HÀNG <strong>MIỄN PHÍ</strong></h4>
+                            <p>Sản phầm được giao hàng nhanh, gọn bằng nhiều hình thức nhằm đáp ứng tốt yêu cầu của khách hàng.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="service">
+                        <div class="support">
+                            <img src="themes/images/feature_img_3.png" alt="" />
+                            <h4>PHỤC VỤ <strong>24/7</strong></h4>
+                            <p>Khách hàng luôn là ưu tiên hàng đầu và được phục vụ 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="background-color: #857474;" id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Điều Hướng</h4>
+                    <ul class="nav">
+                        <li><a href="">Trang chủ</a></li>
+                        <li><a href="">Thông tin</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Giỏ hàng</a></li>
+                        <li><a href="">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">Tài khoản của tôi</a></li>
+                        <li><a href="#">Lịch sử đặt hàng</a></li>
+                        <li><a href="#">Danh sách yêu thích</a></li>
+                        <!-- <li><a href="#">Làm mới</a></li> -->
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo"><!-- <img src="themes/images/logo.png" class="site_logo" alt=""> --><h4>ĐIỆN THOẠI</h4></p>
+                    <p style="color: white;">
+                        Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
+                        <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
+                    </p>
+                    <div style="margin-left: 60px;">
+                        <a href="#" class="button">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="#" class="button">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="button">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="copyright">
+            <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+        </section>
+
+
+
+
+    </div>
+    <script src="~/themes/js/common.js"></script>
+    <script src="~/themes/js/jquery.flexslider-min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.Hoadon
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Hoadon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ngayhd" class="control-label"></label>
+                <input asp-for="Ngayhd" class="form-control" />
+                <span asp-validation-for="Ngayhd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tongtien" class="control-label"></label>
+                <input asp-for="Tongtien" class="form-control" />
+                <span asp-validation-for="Tongtien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Idkh" class="control-label"></label>
+                <select asp-for="Idkh" class ="form-control" asp-items="ViewBag.Idkh"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ghichu" class="control-label"></label>
+                <input asp-for="Ghichu" class="form-control" />
+                <span asp-validation-for="Ghichu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tinhtrang" class="control-label"></label>
+                <input asp-for="Tinhtrang" class="form-control" />
+                <span asp-validation-for="Tinhtrang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

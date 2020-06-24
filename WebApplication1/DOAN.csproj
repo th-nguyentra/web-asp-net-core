@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200331073816_Initial.cs" />
+    <Compile Remove="Migrations\20200331073816_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\app\appMain.js" />
+    <None Include="wwwroot\app\controllers\accountController.js" />
+    <None Include="wwwroot\app\controllers\contactController.js" />
+    <None Include="wwwroot\app\controllers\moduleController.js" />
+    <None Include="wwwroot\app\controllers\orderController.js" />
+    <None Include="wwwroot\app\controllers\productController.js" />
+    <None Include="wwwroot\app\directives\angular-summernote.js" />
+    <None Include="wwwroot\app\directives\directive.js" />
+    <None Include="wwwroot\app\directives\paging.js" />
+    <None Include="wwwroot\app\services\accountServices.js" />
+    <None Include="wwwroot\app\services\ajaxServices.js" />
+    <None Include="wwwroot\app\services\alertsServices.js" />
+    <None Include="wwwroot\app\services\contactServices.js" />
+    <None Include="wwwroot\app\services\moduleServices.js" />
+    <None Include="wwwroot\app\services\orderServices.js" />
+    <None Include="wwwroot\app\services\productServices.js" />
+    <None Include="wwwroot\App_Themes\Home\fonts\fontawesome-webfont5b62.svg" />
+    <None Include="wwwroot\App_Themes\Home\fonts\fontawesome-webfont5b62.woff2" />
+    <None Include="wwwroot\connect.facebook.net\en_US\sdk.js" />
+    <None Include="wwwroot\hts-cache\doit.log" />
+    <None Include="wwwroot\hts-cache\new.lst" />
+    <None Include="wwwroot\hts-cache\new.zip" />
+    <None Include="wwwroot\hts-cache\winprofile.ini" />
+    <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
+    <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
+    <None Include="wwwroot\san-pham\asus-p550lnvxo221d---core-i7-4510u-2.0ghz_3.1ghz---15.6”---4gb-%28xam%29.html.z" />
+    <None Include="wwwroot\san-pham\canon-bg-e11-–-de-pin-%28den%29.html.z" />
+    <None Include="wwwroot\san-pham\canon-fs300-–-may-quay-the-nho-%28xam%29.html.z" />
+    <None Include="wwwroot\san-pham\dell-inspiron-one-2350-mons1405368---core-i3-4000m-2.4ghz---23”-full-hd---8gb---1tb-%28bac%29.html.z" />
+    <None Include="wwwroot\san-pham\sony-handycam-dcr-sr47-–-may-quay-the-nho-%28xanh%29---hang-nhap-khau-sony-handycam-dcr-sr47.html.z" />
+    <None Include="wwwroot\Scripts\addthis\addthis_widget.js" />
+    <None Include="wwwroot\Scripts\angular-loading-spinner\angular-loading-spinner.js" />
+    <None Include="wwwroot\Scripts\angular-loading-spinner\angular-spinner.min.js" />
+    <None Include="wwwroot\Scripts\angular-loading-spinner\spin.min.js" />
+    <None Include="wwwroot\Scripts\angularJS\angular-sanitize.min.js" />
+    <None Include="wwwroot\Scripts\angularJS\angular.min.js" />
+    <None Include="wwwroot\Scripts\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\Scripts\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\Scripts\common\common.js" />
+    <None Include="wwwroot\Scripts\common\fix-height.js" />
+    <None Include="wwwroot\Scripts\common\jquery.cookie.js" />
+    <None Include="wwwroot\Scripts\common\login.js" />
+    <None Include="wwwroot\Scripts\common\mycard.js" />
+    <None Include="wwwroot\Scripts\flexSlider\fonts\flexslider-icon.svg" />
+    <None Include="wwwroot\Scripts\flexSlider\jquery.flexslider-min.js" />
+    <None Include="wwwroot\Scripts\jQuery-ui\jquery-ui.min.js" />
+    <None Include="wwwroot\Scripts\jQuery\jquery-2.1.4.min.js" />
+    <None Include="wwwroot\Scripts\jQuery\jquery-migrate-1.2.1.min.js" />
+    <None Include="wwwroot\Scripts\lazyLoad\jquery.lazyload.min.js" />
+    <None Include="wwwroot\Scripts\owl-carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\Scripts\smoothproducts\smoothproducts.js" />
+    <None Include="wwwroot\tin-tuc\“bat-mi”-mau-smartphone-man-hinh-cong-bi-mat-cua-lg.html.z" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.OSX" Version="18.1.0.53" />
+    <PackageReference Include="Syncfusion.HtmlToPdfConverter.QtWebKit.Net.Core" Version="18.1.0.52" />
+  </ItemGroup>
+
+
+
+</Project>

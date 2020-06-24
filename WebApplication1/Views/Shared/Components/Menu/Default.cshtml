@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model IEnumerable<WebApplication1.Models.Hang>
+
+@if (Model != null)
+{
+
+    @foreach (var item in Model)
+    {
+
+        <li> <a style="font-size:12px;" asp-action="LoaiSP" asp-route-id="@item.Mahang">@item.Tenhang</a> </li>
+
+    }
+
+
+}

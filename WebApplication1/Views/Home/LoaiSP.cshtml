@@ -1,0 +1,219 @@
+﻿@model IEnumerable<WebApplication1.Models.Sanpham>
+@{
+    ViewData["Title"] = "LoaiSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+    <style type="text/css">
+        .product-box:hover {
+            background-color: white !important;
+            box-shadow: 0px 0px 5px #1f1e1e !important;
+        }
+
+            .product-box:hover a {
+                color: #f60 !important;
+            }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper" class="container">
+
+        <section class="main-content">
+            <div class="row">
+                <div class="span9">
+                    <br>
+                    <div class="row">
+                        <div class="span9">
+                            <h4 class="title">
+
+                                <span class="pull-left">
+                                    <span class="text"><span class="line"><a href="https://localhost:44380/Home/ChiTietSanPham"><strong>Các sản phẩm mới nhất</strong></a></span></span>
+                                </span>
+
+                                <span class="pull-right">
+                                    <a class="left button" href="https://localhost:44380/Home/ChiTietSanPham" data-slide="prev"></a><a class="right button" href="http://localhost/lar-53/public/index#myCarousel-2" data-slide="next"></a>
+                                </span>
+                            </h4>
+                            <div id="myCarousel-2" class="myCarousel carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="active item">
+                                        <ul class="thumbnails">
+                                            @foreach (var item in Model.OrderBy(p => p.Masp).Take(4))
+                                            {
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        <span class="sale_tag"></span>
+                                                        <p>
+                                                            <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
+                                                                <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
+                                                            </a>
+                                                        </p>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
+                                                            @if (item.Giakhuyenmai != 1)
+                                                            {
+                                                                <strong style="font-size:20px">@String.Format("{0:N0}", item.Gia * item.Giakhuyenmai) VNĐ</strong>
+                                                                <strike>@String.Format("{0:N0}", item.Gia) VNĐ</strike>
+                                                            }
+                                                            else
+                                                            {
+
+                                                                <strong style="font-size:20px"> @String.Format("{0:N0}", item.Gia) VNĐ</strong>
+
+                                                            }
+                                                        </a>
+
+
+                                                    </div>
+                                                </li>
+
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                    <!-- -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="span9">
+                            <h4 class="title">
+
+                                <span class="pull-left">
+                                    <span class="text"><span class="line"><a href="http://localhost/lar-53/public/product_detail.html"><strong>Các sản phẩm nổi bật nhất</strong></a></span></span>
+                                </span>
+
+                                <span class="pull-right">
+                                    <a class="left button" href="http://localhost/lar-53/public/index#myCarousel-3" data-slide="prev"></a><a class="right button" href="http://localhost/lar-53/public/index#myCarousel-3" data-slide="next"></a>
+                                </span>
+                            </h4>
+                            <div id="myCarousel-3" class="myCarousel carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="active item">
+                                        <ul class="thumbnails">
+                                            @foreach (var item in Model.OrderBy(p => p.Tensp))
+                                            {
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        <span class="sale_tag"></span>
+                                                        <p>
+                                                            <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp"><img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt=""></a>
+                                                        </p>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
+                                                            @if (item.Giakhuyenmai != 1)
+                                                            {
+                                                                <strong style="font-size:20px">@String.Format("{0:N0}", item.Gia * item.Giakhuyenmai) VNĐ</strong>
+                                                                <strike>@String.Format("{0:N0}", item.Gia) VNĐ</strike>
+                                                            }
+                                                            else
+                                                            {
+
+                                                                <strong style="font-size:20px"> @String.Format("{0:N0}", item.Gia) VNĐ</strong>
+
+                                                            }
+                                                        </a>
+
+                                                    </div>
+                                                </li>
+
+                                            }
+
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="span3 col">
+                    <div class="block">
+                        <br />
+                        <ul class="nav nav-list below">
+                            <li class="nav-header">Nhãn hiệu</li>
+                            @await Component.InvokeAsync("Menu");
+                        </ul>
+                    </div>
+                    <div class="block">
+                        <h4 class="title">
+                            <span class="pull-left"><span class="text">Ngẫu nhiên</span></span>
+                            <span class="pull-right">
+                                <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                            </span>
+                        </h4>
+                        <div id="myCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <ul class="thumbnails listing-products">
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <a href="product_detail.html"><img alt="" src="https://cdn.tgdd.vn/Products/Images/42/210654/iphone-11-pro-max-512gb-gold-400x400.jpg"></a><br />
+                                                <a href="product_detail.html" class="title">Điện thoại Samsung Galaxy S10+ (512GB)</a><br />
+                                                <!-- <a href="#" class="category">7130U/4GB/128GB/Win10</a> -->
+                                                <p class="price">22.990.000₫</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="thumbnails listing-products">
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <a href="product_detail.html"><img alt="" src="https://cdn.tgdd.vn/Products/Images/42/219314/samsung-galaxy-a21s-055620-045659-400x400.jpg"></a><br />
+                                                <a href="product_detail.html" class="title">Điện thoại Samsung Galaxy S10+ (512GB)</a><br />
+                                                <!-- <a href="#" class="category">6006U/4GB/1TB/Win10</a> -->
+                                                <p class="price">22.990.000₫</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <h4 class="title"><strong>Bán</strong> chạy</h4>
+                        <ul class="small-product">
+                            <li>
+                                <a href="#" title="Praesent tempor sem sodales">
+                                    <img src="https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-128gb-green-600x600.jpg" alt="Praesent tempor sem sodales">
+                                </a>
+                                <a href="#">Điện thoại iPhone Xs Max 256GB</a>
+                            </li>
+                            <li>
+                                <a href="#" title="Luctus quam ultrices rutrum">
+                                    <img src="https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-400x400.jpg" alt="Luctus quam ultrices rutrum">
+                                </a>
+                                <a href="#">Điện thoại Samsung Galaxy S10+ (512GB)</a>
+                            </li>
+                            <li>
+                                <a href="#" title="Fusce id molestie massa">
+                                    <img src="https://cdn.tgdd.vn/Products/Images/42/220654/oppo-a92-white-600x600-400x400.jpg" alt="Fusce id molestie massa">
+                                </a>
+                                <a href="#">Điện thoại iPhone Xs Max 256GB</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+
+
+
+    <div id="topcontrol" title="Scroll Back to Top" style="position: fixed; bottom: 12px; right: 0px; opacity: 1; cursor: pointer;"><img src="source/themes/images/gotop.png" style="width:40px; height:40px; margin-top: 25px; margin-right: 17px;"></div>
+</body>
+
+

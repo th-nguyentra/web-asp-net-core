@@ -1,0 +1,146 @@
+﻿@model Users
+@{
+    ViewData["Title"] = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    @if (TempData["validationmessage"] != null)
+    {
+        string alertType = "alert alert-" + TempData["alertType"];
+        <div class="@alertType">
+            <strong>Alert!</strong> @TempData["validationmessage"]
+        </div>
+    }
+</div>
+@*<h2 class="text-center">Đăng ký</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron" style="padding-left: 40%;background: #e2dfdf78">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form style="width: 220px;height: 500px;padding: 20px;" role="form" asp-action="Registration" asp-controller="Home" method="post">
+
+                <div class="form-group">
+                    <label for="Name">Họ và tên</label>
+                    <input type="text" name="FullName" asp-for="FullName" class="form-control input-sm" autocomplete="off" data-val="true" data-val-required="The Mobile field is required." placeholder="FullName">
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Diachi">Địa chỉ</label>
+                    <input type="text" name="Diachi" data-val="true" autocomplete="off" data-val-required="The Mobile field is required." asp-for="Diachi" class="form-control input-sm" placeholder="Diachi">
+                    <span asp-validation-for="Diachi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Sdt">Số điện thoại</label>
+                    <input type="text" name="Sdt" data-val="true" autocomplete="off" data-val-required="The Mobile field is required." asp-for="Sdt" class="form-control input-sm" placeholder="Mobile">
+                    <span asp-validation-for="Sdt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" name="Email" asp-for="Email" autocomplete="off" data-val="true" class="form-control input-sm" data-val-required="The Mobile field is required." placeholder="Email Address">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" name="Password" asp-for="Password" autocomplete="off" class="form-control input-sm" data-val="true" data-val-required="The Mobile field is required." placeholder="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="ConfirmPassword">Password</label>
+                    <input type="password" name="ConfirmPassword" asp-for="Password" autocomplete="off" class="form-control input-sm" placeholder="ConfirmPassword">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <input type="submit" value="Registration" class="btn btn-info btn-block">
+                <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
+            </form>
+        </div>
+    </div>
+
+</div>*@
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div class="menu-account">
+                    <h3 style="background-color: #ff9c00;color: #ffffff;font-size: 14px; font-weight: bold;
+    padding: 15px 10px; text-transform: uppercase; margin: 0; border-left: 5px solid #3c3f44;">
+                        <span>
+                            Tài khoản
+                        </span>
+                    </h3>
+                    <ul>
+                        <li style="    color: #6c717a;
+    font-weight: normal;
+    border-bottom: 1px dotted #c3c3c3;
+    display: block;
+    position: relative;
+    padding: 10px 15px;"><a asp-controller="Home" asp-action="Login">Đăng nhập</a></li>
+                        <li style="    color: #6c717a;
+    font-weight: normal;
+    border-bottom: 1px dotted #c3c3c3;
+    display: block;
+    position: relative;
+    padding: 10px 15px;"><a asp-controller="Home" asp-action="Registration">Đăng ký</a></li>
+                        <li style="    color: #6c717a;
+    font-weight: normal;
+    border-bottom: 1px dotted #c3c3c3;
+    display: block;
+    position: relative;
+    padding: 10px 15px;"><a href="dang-nhap.html">Quên mật khẩu</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="width: 645px;" class="span9">
+
+                <div class="login-content clearfix" ng-controller="accountController" ng-init="initController()">
+                    <h4 style="color:#ff9c00;" class="title"><span class="text">Đăng ký hệ thống</span></h4>
+
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="jumbotron" style="padding-left: 40%" ;>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <form style="width: 220px;height: 500px;padding: 20px;" role="form" asp-action="Registration" asp-controller="Home" method="post">
+
+                                <div class="form-group">
+                                    <label for="Name">Họ và tên</label>
+                                    <input type="text" name="FullName" asp-for="FullName" class="form-control input-sm" autocomplete="off" data-val="true" data-val-required="The Mobile field is required." placeholder="FullName">
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Diachi">Địa chỉ chi tiết</label>
+                                    <input type="text" name="Diachi" data-val="true" autocomplete="off" data-val-required="The Mobile field is required." asp-for="Diachi" class="form-control input-sm" placeholder="Diachi">
+                                    <span asp-validation-for="Diachi" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Sdt">Số điện thoại</label>
+                                    <input type="text" name="Sdt" data-val="true" autocomplete="off" data-val-required="The Mobile field is required." asp-for="Sdt" class="form-control input-sm" placeholder="Mobile">
+                                    <span asp-validation-for="Sdt" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <input type="email" name="Email" asp-for="Email" autocomplete="off" data-val="true" class="form-control input-sm" data-val-required="The Mobile field is required." placeholder="Email Address">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Password">Password</label>
+                                    <input type="password" name="Password" asp-for="Password" autocomplete="off" class="form-control input-sm" data-val="true" data-val-required="The Mobile field is required." placeholder="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ConfirmPassword">Password</label>
+                                    <input type="password" name="ConfirmPassword" asp-for="Password" autocomplete="off" class="form-control input-sm" placeholder="ConfirmPassword">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <input style="background: #ff9c00;" type="submit" value="Registration" class="btn btn-info btn-block">
+                                <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

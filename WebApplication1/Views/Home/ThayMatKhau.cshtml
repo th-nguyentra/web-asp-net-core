@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNetCore.Http
+@model WebApplication1.Models.Users
+@{
+    ViewData["Title"] = "TaiKhoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+
+
+    var Password = Context.Session.GetString("Password");
+
+    var Id = Context.Session.GetInt32("Id");
+    var Email = Context.Session.GetString("Email");
+    var sdt = Context.Session.GetString("sdt");
+    var ten = Context.Session.GetString("ten");
+    var diachi = Context.Session.GetString("diachi");
+
+}
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div class="menu-account">
+                    <h3 style="background-color: #ff9c00;color: #ffffff;font-size: 14px; font-weight: bold; padding: 15px 10px; text-transform: uppercase; margin: 0; border-left: 5px solid #3c3f44;">
+                        <span>
+                            Thông tin
+                        </span>
+                    </h3>
+                    <ul>
+                        <li style="color: #6c717a;font-weight: normal; border-bottom: 1px dotted #c3c3c3; display: block; position: relative;padding: 10px 15px;">
+                            <a asp-controller="Home" asp-action="TaiKhoan"asp-route-id="@Id">Thông tin tài khoản</a>
+                        </li>
+                        <li style="color: #6c717a;font-weight: normal;border-bottom: 1px dotted #c3c3c3;display: block; position: relative; padding: 10px 15px;">
+                            <a asp-controller="Home" asp-action="ThayMatKhau"asp-route-id="@Id">Thay đổi mật khẩu</a>
+                        </li>
+                        <li style="color: #6c717a;font-weight: normal;border-bottom: 1px dotted #c3c3c3;display: block; position: relative; padding: 10px 15px;">
+                            <a asp-controller="Home" asp-action="LichSuDonHang"asp-route-id="@Id">Lịch sử đơn hàng</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="width: 645px;" class="span9">
+
+                <div style="padding-left: 30px;" class="row">
+                    <div class="span5">
+                    <h4 style="color:#ff9c00;" class="title"><span class="text">Thông tin tài khoản</span></h4>
+                        <form style="margin: 0px 0px 165px 200px;" asp-controller="Home" asp-action="TaiKhoan">
+                            <fieldset>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="@Id" />
+                                <div class="form-group">
+                                    Mật khẩu hiện tại (bỏ trống nếu không đổi)
+                                    <input asp-for="Password" value="@Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    Mật khẩu mới (bỏ trống nếu không đổi)
+
+                                    <input type="password" asp-for="Password" value="@Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    Xác nhận mật khẩu mới
+                                    <input asp-for="FullName" value="@ten" class="form-control" />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                           
+                                <div class="form-group">
+                                    <input style="background:#ff9c00;" type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

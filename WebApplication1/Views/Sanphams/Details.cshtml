@@ -1,0 +1,98 @@
+﻿@model WebApplication1.Models.Sanpham
+
+@{
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>Sản Phẩm</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Tensp): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Tensp)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Mota): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Mota)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Namsx): </label>
+                        <label style="color:saddlebrown" class="control-label">@Html.DisplayFor(model => model.Namsx)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">  @Html.DisplayNameFor(model => model.Gia): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Gia)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Giakhuyenmai): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Giakhuyenmai)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Anhdaidien): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Anhdaidien)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Cameratruoc): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Cameratruoc)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Camerasau): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Camerasau)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Ram): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Ram)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Bonhotrong): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Bonhotrong)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Cpu): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Cpu)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Gpu): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Gpu)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Pin): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Pin)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Os): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Os)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.Sim): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.Sim)</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> @Html.DisplayNameFor(model => model.HangNavigation): </label>
+                        <label style="color:saddlebrown" class="control-label"> @Html.DisplayFor(model => model.HangNavigation.Tenhang)</label>
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+   
+    </div>
+<div>
+    <a  style="background:#12eae0e8;padding: 6px 9px 10px 5px;"asp-action="Edit" asp-route-id="@Model.Masp">Edit</a> |
+    <a style="background:#12eae0e8;padding: 6px 9px 10px 5px;" asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
